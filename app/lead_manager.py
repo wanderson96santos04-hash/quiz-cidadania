@@ -25,7 +25,7 @@ def ensure_csv_exists() -> None:
 
 
 def enviar_telegram(lead: dict) -> None:
-    TOKEN = "8791868047:AAH3WKdxpHFARA4icaHhksSHBM8xtuIdVck"
+    TOKEN = "8791868047:AAHOR4WUK-7t0XGfXwqSTIHYiLZNgnZulGo"
     CHAT_ID = "8321287889"
 
     mensagem = f"""
