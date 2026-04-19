@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Análise Inicial de Cidadania Italiana</title>
+    <meta name="description" content="Descubra se sua família pode ter direito à cidadania italiana com uma análise inicial rápida, gratuita e confidencial." />
+    <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+    <main class="quiz-page">
+        <section class="quiz-shell">
+            <div class="quiz-topbar">
+                <div class="progress-track">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+
+            <div class="quiz-wrap">
+                <section class="quiz-left">
+                    <div class="hero-badge">
+                        <span class="hero-badge-icon">🛡</span>
+                        <span>Análise Inicial</span>
+                    </div>
+
+                    <h1>
+                        Descubra se sua família pode ter direito à
+                        <span>cidadania italiana</span>
+                    </h1>
+
+                    <p class="hero-proof">
+                        Mais de <strong>1.200 pessoas</strong> já iniciaram essa análise inicial.
+                    </p>
+
+                    <p class="hero-subtitle">
+                        Responda perguntas rápidas para entender melhor sinais de elegibilidade,
+                        documentos, histórico familiar e urgência do seu caso.
+                    </p>
+
+                    <a href="#quizCard" class="hero-cta">
+                        Descobrir se tenho direito agora
+                    </a>
+
+                    <div class="hero-checks">
+                        <div class="hero-check">✔ Leva menos de 2 minutos</div>
+                        <div class="hero-check">✔ Sem compromisso</div>
+                        <div class="hero-check">✔ Análise inicial gratuita</div>
+                    </div>
+                </section>
+
+                <section class="quiz-right">
+                    <div class="quiz-card" id="quizCard">
+                        <div class="quiz-card-head">
+                            <div class="quiz-mini-badge">Questionário confidencial</div>
+                            <div class="quiz-step-counter" id="stepCounter">Etapa 1 de 7</div>
+                        </div>
+
+                        <form id="multiStepForm" action="/lead" method="post" novalidate>
+                            <input type="hidden" name="nome" id="hidden_nome" />
+                            <input type="hidden" name="whatsapp" id="hidden_whatsapp" />
+                            <input type="hidden" name="sobrenome_italiano" id="hidden_sobrenome_italiano" />
+                            <input type="hidden" name="familia_cidadania" id="hidden_familia_cidadania" />
+                            <input type="hidden" name="documentos" id="hidden_documentos" />
+                            <input type="hidden" name="interesse" id="hidden_interesse" />
+                            <input type="hidden" name="urgencia" id="hidden_urgencia" />
+                            <input type="hidden" name="consentimento" id="hidden_consentimento" value="nao" />
+
+                            <div class="steps">
+
+                                <div class="step active" data-step="1">
+                                    <div class="step-tag">Etapa inicial</div>
+                                    <h2>Para começar, qual seu nome completo?</h2>
+                                    <p class="step-desc">
+                                        Isso ajuda a deixar seu atendimento mais organizado.
+                                    </p>
+
+                                    <div class="field">
+                                        <input
+                                            type="text"
+                                            id="nome"
+                                            placeholder="Digite seu nome completo"
+                                            autocomplete="name"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="2">
+                                    <div class="step-tag">Contato</div>
+                                    <h2>Qual seu WhatsApp?</h2>
+                                    <p class="step-desc">
+                                        Usamos esse contato apenas para retorno sobre sua análise.
+                                    </p>
+
+                                    <div class="field">
+                                        <input
+                                            type="text"
+                                            id="whatsapp"
+                                            placeholder="(00) 00000-0000"
+                                            inputmode="numeric"
+                                            autocomplete="tel"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="3">
+                                    <div class="step-tag">Perfil familiar</div>
+                                    <h2>Você tem sobrenome italiano?</h2>
+                                    <p class="step-desc">
+                                        Esse é um dos sinais iniciais que podem ajudar na análise.
+                                    </p>
+
+                                    <div class="options-grid">
+                                        <button type="button" class="option-btn" data-field="sobrenome_italiano" data-value="Sim">Sim</button>
+                                        <button type="button" class="option-btn" data-field="sobrenome_italiano" data-value="Não sei">Não sei</button>
+                                        <button type="button" class="option-btn" data-field="sobrenome_italiano" data-value="Não">Não</button>
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="4">
+                                    <div class="step-tag">Histórico</div>
+                                    <h2>Alguém da sua família já teve cidadania italiana?</h2>
+                                    <p class="step-desc">
+                                        Isso pode indicar um caminho mais claro para o seu caso.
+                                    </p>
+
+                                    <div class="options-grid">
+                                        <button type="button" class="option-btn" data-field="familia_cidadania" data-value="Sim">Sim</button>
+                                        <button type="button" class="option-btn" data-field="familia_cidadania" data-value="Não">Não</button>
+                                        <button type="button" class="option-btn" data-field="familia_cidadania" data-value="Não sei">Não sei</button>
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="5">
+                                    <div class="step-tag">Documentação</div>
+                                    <h2>Você já possui documentos do antepassado?</h2>
+                                    <p class="step-desc">
+                                        Ter documentos pode acelerar bastante a próxima etapa da análise.
+                                    </p>
+
+                                    <div class="options-grid">
+                                        <button type="button" class="option-btn" data-field="documentos" data-value="Sim">Sim</button>
+                                        <button type="button" class="option-btn" data-field="documentos" data-value="Tenho alguns">Tenho alguns</button>
+                                        <button type="button" class="option-btn" data-field="documentos" data-value="Não">Não</button>
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="6">
+                                    <div class="step-tag">Interesse</div>
+                                    <h2>Qual seu nível de interesse hoje?</h2>
+                                    <p class="step-desc">
+                                        Isso ajuda a entender o momento ideal para o seu atendimento.
+                                    </p>
+
+                                    <div class="options-grid">
+                                        <button type="button" class="option-btn" data-field="interesse" data-value="Só estou pesquisando">Só estou pesquisando</button>
+                                        <button type="button" class="option-btn" data-field="interesse" data-value="Tenho interesse">Tenho interesse</button>
+                                        <button type="button" class="option-btn" data-field="interesse" data-value="Quero iniciar o processo">Quero iniciar o processo</button>
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="7">
+                                    <div class="step-tag">Urgência</div>
+                                    <h2>Qual sua urgência?</h2>
+                                    <p class="step-desc">
+                                        Estamos quase terminando. Essa resposta ajuda a priorizar melhor seu perfil.
+                                    </p>
+
+                                    <div class="options-grid">
+                                        <button type="button" class="option-btn" data-field="urgencia" data-value="Sem pressa">Sem pressa</button>
+                                        <button type="button" class="option-btn" data-field="urgencia" data-value="Quero resolver ainda este ano">Quero resolver ainda este ano</button>
+                                        <button type="button" class="option-btn" data-field="urgencia" data-value="Preciso com urgência">Preciso com urgência</button>
+                                    </div>
+                                </div>
+
+                                <div class="step" data-step="8">
+                                    <div class="step-tag">Finalizar</div>
+                                    <h2>Confirme seus dados para concluir sua análise inicial</h2>
+                                    <p class="step-desc">
+                                        Último passo. Seu envio é gratuito e confidencial.
+                                    </p>
+
+                                    <div class="summary-box" id="summaryBox"></div>
+
+                                    <label class="consent-box">
+                                        <input type="checkbox" id="consentimento_checkbox" />
+                                        <span>
+                                            Autorizo o compartilhamento dos meus dados com parceiros especializados
+                                            em cidadania italiana para contato e orientação sobre meu caso.
+                                        </span>
+                                    </label>
+
+                                    <button type="submit" class="submit-btn">
+                                        Quero verificar meu direito à cidadania
+                                    </button>
+
+                                    <div class="final-checks">
+                                        <div>✔ Processo pré-análise gratuito</div>
+                                        <div>✔ Informações tratadas com confidencialidade</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="quiz-nav">
+                                <button type="button" class="nav-btn nav-back" id="prevBtn">Voltar</button>
+                                <button type="button" class="nav-btn nav-next" id="nextBtn">Continuar</button>
+                            </div>
+
+                            <p class="quiz-note">
+                                Processo inicial simples, rápido e sem compromisso.
+                            </p>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/js/main.js"></script>
+</body>
+</html>
