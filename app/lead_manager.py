@@ -1,7 +1,7 @@
 import csv
 from datetime import datetime
 from app.config import LEADS_FILE
-import requests  # 👈 NOVO
+import requests
 
 
 HEADERS = [
@@ -24,8 +24,8 @@ def ensure_csv_exists() -> None:
             writer.writerow(HEADERS)
 
 
-def enviar_telegram(lead: dict):  # 👈 NOVO
-    TOKEN = "8791868047:AAFpr3DkLAvWLE_o5KNmPdyB9rJJ2JwROTA"
+def enviar_telegram(lead: dict) -> None:
+    TOKEN = "8791868047:AAH3WKdxpHFARA4icaHhksSHBM8xtuIdVck"
     CHAT_ID = "8321287889"
 
     mensagem = f"""
@@ -35,17 +35,22 @@ def enviar_telegram(lead: dict):  # 👈 NOVO
 📞 WhatsApp: {lead['whatsapp']}
 📍 Interesse: {lead['interesse']}
 ⚡ Urgência: {lead['urgencia']}
-    """
+""".strip()
 
     url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
-    try:
-        requests.post(url, data={
+    resposta = requests.post(
+        url,
+        data={
             "chat_id": CHAT_ID,
             "text": mensagem
-        })
-    except:
-        pass  # 👈 não quebra nada se der erro
+        },
+        timeout=15,
+    )
+
+    print("TELEGRAM STATUS:", resposta.status_code)
+    print("TELEGRAM RESPOSTA:", resposta.text)
+    resposta.raise_for_status()
 
 
 def save_lead(lead: dict) -> None:
@@ -67,4 +72,7 @@ def save_lead(lead: dict) -> None:
             ]
         )
 
-    enviar_telegram(lead)  # 👈 SÓ ADICIONAMOS ISSO
+    try:
+        enviar_telegram(lead)
+    except Exception as e:
+        print("ERRO AO ENVIAR TELEGRAM:", str(e))
